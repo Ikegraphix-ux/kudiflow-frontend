@@ -1,113 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KudiFlow - Processing</title>
-
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <main class="state-page">
-
         <section class="state-card">
-
             <div class="processing-spinner"></div>
-
             <h1>Processing transaction...</h1>
-
-            <p>
-                We're processing your transfer.
-            </p>
-
+            <p>We're processing your transfer.</p>
             <p class="important-message">
-                Please don't close this page or submit
-                the transaction again.
+                Please don't close this page or submit the transaction again.
             </p>
-
             <div class="transaction-reference">
-
                 <span>Transaction Reference</span>
-
-                <strong id="transactionReference">
-                    Generating...
-                </strong>
-
+                <strong id="transactionReference">Generating...</strong>
             </div>
-
         </section>
-
     </main>
 
-
     <script>
+        const reference = "TXN-" + Date.now().toString().slice(-8);
+        document.getElementById("transactionReference").textContent = reference;
 
-        const reference =
-            "TXN-" +
-            Date.now().toString().slice(-8);
-
-
-        document.getElementById(
-            "transactionReference"
-        ).textContent = reference;
-
-
-        /*
-         * Frontend demonstration:
-         * simulate backend processing.
-         */
-
+        // Frontend demonstration only: simulate backend processing once.
         setTimeout(() => {
-
-            sessionStorage.setItem(
-                "kudiflow_transaction_status",
-                "SUCCESS"
-            );
-
-            sessionStorage.setItem(
-                "kudiflow_transaction_reference",
-                reference
-            );
-
-            window.location.href =
-                "success.html";
-
+            sessionStorage.setItem("kudiflow_transaction_status", "SUCCESS");
+            sessionStorage.setItem("kudiflow_transaction_reference", reference);
+            window.location.href = "success.html";
         }, 2500);
-
-        let transactionStarted = false;
-
-
-        function startTransaction() {
-
-            if (transactionStarted) {
-                return;
-            }
-
-            transactionStarted = true;
-
-            setTimeout(() => {
-
-                window.location.href =
-                    "success.html";
-
-            }, 2500);
-
-        }
-
-
-        startTransaction();
-
-
     </script>
-
 </body>
-
 </html>
