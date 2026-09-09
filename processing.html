@@ -49,11 +49,14 @@
                 const existing = JSON.parse(localStorage.getItem("kudiflow_transactions") || "[]");
                 if (!existing.some(item => item.id === reference)) {
                     localStorage.setItem("kudiflow_transactions", JSON.stringify([transaction, ...existing]));
+                    const balance = Number(localStorage.getItem("kudiflow_balance") || "2450");
+                    localStorage.setItem("kudiflow_balance", Math.max(0, balance - transaction.amount).toFixed(2));
                 }
 
                 sessionStorage.setItem("kudiflow_transaction_status", "SUCCESS");
                 sessionStorage.setItem("kudiflow_transaction_reference", reference);
                 sessionStorage.setItem("kudiflow_completed_transaction", JSON.stringify(transaction));
+                sessionStorage.removeItem("kudiflow_transfer");
                 window.location.href = "success.html";
             }, 2500);
         }
