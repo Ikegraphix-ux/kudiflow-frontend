@@ -83,7 +83,6 @@ kudiflow-frontend/
 ├── css/
 │   └── style.css
 ├── js/
-│   ├── app.js
 │   ├── auth.js
 │   ├── session.js
 │   ├── dashboard.js
