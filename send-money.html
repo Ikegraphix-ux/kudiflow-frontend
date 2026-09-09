@@ -1,207 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>KudiFlow - Send Money</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <div class="dashboard-layout">
-
         <aside class="sidebar">
-
             <div class="sidebar-brand">
                 <div class="brand-icon">K</div>
-
-                <div>
-                    <h2>KudiFlow</h2>
-                    <span>Digital Finance</span>
-                </div>
+                <div><h2>KudiFlow</h2><span>Digital Finance</span></div>
             </div>
-
             <nav class="sidebar-nav">
-
-                <a href="dashboard.html" class="nav-link">
-                    <span>⌂</span>
-                    Dashboard
-                </a>
-
-                <a href="send-money.html" class="nav-link active">
-                    <span>↗</span>
-                    Send Money
-                </a>
-
-                <a href="transactions.html" class="nav-link">
-                    <span>↔</span>
-                    Transactions
-                </a>
-
+                <a href="dashboard.html" class="nav-link"><span>⌂</span>Dashboard</a>
+                <a href="send-money.html" class="nav-link active"><span>↗</span>Send Money</a>
+                <a href="transactions.html" class="nav-link"><span>↔</span>Transactions</a>
             </nav>
-
             <div class="sidebar-bottom">
-                <button id="logoutButton" class="logout-button">
-                    <span>↪</span>
-                    Logout
-                </button>
+                <button id="logoutButton" class="logout-button"><span>↪</span>Logout</button>
             </div>
-
         </aside>
 
-
         <main class="dashboard-main">
-
             <header class="page-header">
-
                 <div>
-                    <p class="welcome-small">
-                        Transfers
-                    </p>
-
+                    <p class="welcome-small">Transfers</p>
                     <h1>Send Money</h1>
-
-                    <p class="page-description">
-                        Transfer virtual Ghana cedis securely.
-                    </p>
+                    <p class="page-description">Transfer virtual Ghana cedis securely.</p>
                 </div>
-
             </header>
 
-
             <section class="transfer-container">
-
                 <div class="transfer-card card">
-
                     <div class="transfer-header">
-
-                        <div class="transfer-icon">
-                            ↗
-                        </div>
-
-                        <div>
-                            <h2>New Transfer</h2>
-
-                            <p>
-                                Enter the recipient and amount.
-                            </p>
-                        </div>
-
+                        <div class="transfer-icon">↗</div>
+                        <div><h2>New Transfer</h2><p>Enter the recipient and amount.</p></div>
                     </div>
 
-
                     <form id="transferForm">
-
                         <div class="form-group">
-
-                            <label
-                                class="form-label"
-                                for="recipient"
-                            >
-                                Recipient Account Number
-                            </label>
-
-                            <input
-                                type="text"
-                                id="recipient"
-                                class="form-input"
-                                placeholder="e.g. KDF456789"
-                                autocomplete="off"
-                            >
-
-                            <small
-                                id="recipientError"
-                                class="field-error"
-                            ></small>
-
+                            <label class="form-label" for="recipient">Recipient Account Number</label>
+                            <input type="text" id="recipient" class="form-input" placeholder="e.g. KDF456789" autocomplete="off">
+                            <small id="recipientError" class="field-error"></small>
                         </div>
 
-
                         <div class="form-group">
-
-                            <label
-                                class="form-label"
-                                for="amount"
-                            >
-                                Amount
-                            </label>
-
+                            <label class="form-label" for="amount">Amount</label>
                             <div class="amount-input-wrapper">
-
                                 <span>GHS</span>
-
-                                <input
-                                    type="number"
-                                    id="amount"
-                                    class="form-input"
-                                    placeholder="0.00"
-                                    min="0.01"
-                                    step="0.01"
-                                >
-
+                                <input type="number" id="amount" class="form-input" placeholder="0.00" min="0.01" step="0.01">
                             </div>
-
-                            <small
-                                id="amountError"
-                                class="field-error"
-                            ></small>
-
+                            <small id="amountError" class="field-error"></small>
                         </div>
-
 
                         <div class="available-balance">
-
-                            <span>
-                                Available balance
-                            </span>
-
-                            <strong>
-                                GHS 2,450.00
-                            </strong>
-
+                            <span>Available balance</span>
+                            <strong>GHS 2,450.00</strong>
                         </div>
 
+                        <div id="transferError" class="alert alert-error hidden"></div>
 
-                        <div
-                            id="transferError"
-                            class="alert alert-error hidden"
-                        ></div>
-
-
-                        <button
-                            type="submit"
-                            class="btn btn-primary transfer-submit"
-                        >
-                            Continue
-                        </button>
-
+                        <button type="submit" class="btn btn-primary transfer-submit">Continue</button>
                     </form>
-
                 </div>
-
             </section>
-
         </main>
-
     </div>
-
 
     <script src="js/transfer.js"></script>
     <script src="js/session.js"></script>
-    <script src="js/dashboard.js"></script>
-
 </body>
-
 </html>
