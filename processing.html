@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KudiFlow transaction processing">
     <title>KudiFlow - Processing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <main class="state-page">
-        <section class="state-card">
-            <div class="processing-spinner"></div>
-            <h1>Processing transaction...</h1>
-            <p>We're processing your transfer.</p>
-            <p class="important-message">
-                Please don't close this page or submit the transaction again.
-            </p>
+        <section class="state-card" aria-live="polite">
+            <div class="processing-spinner" aria-hidden="true"></div>
+            <p class="welcome-small">Secure transfer</p>
+            <h1>Processing transaction</h1>
+            <p>We're securely processing your transfer.</p>
+            <p class="important-message">Please don't close this page or submit the transaction again.</p>
             <div class="transaction-reference">
                 <span>Transaction Reference</span>
                 <strong id="transactionReference">Generating...</strong>
@@ -23,15 +26,37 @@
     </main>
 
     <script>
+        const transfer = JSON.parse(sessionStorage.getItem("kudiflow_transfer") || "null");
         const reference = "TXN-" + Date.now().toString().slice(-8);
         document.getElementById("transactionReference").textContent = reference;
 
-        // Frontend demonstration only: simulate backend processing once.
-        setTimeout(() => {
-            sessionStorage.setItem("kudiflow_transaction_status", "SUCCESS");
-            sessionStorage.setItem("kudiflow_transaction_reference", reference);
-            window.location.href = "success.html";
-        }, 2500);
+        if (!transfer) {
+            window.location.href = "send-money.html";
+        } else {
+            setTimeout(() => {
+                const now = new Date();
+                const transaction = {
+                    id: reference,
+                    type: "sent",
+                    recipient: transfer.recipient,
+                    name: transfer.recipient,
+                    amount: Number(transfer.amount),
+                    status: "success",
+                    date: now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }),
+                    time: now.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })
+                };
+
+                const existing = JSON.parse(localStorage.getItem("kudiflow_transactions") || "[]");
+                if (!existing.some(item => item.id === reference)) {
+                    localStorage.setItem("kudiflow_transactions", JSON.stringify([transaction, ...existing]));
+                }
+
+                sessionStorage.setItem("kudiflow_transaction_status", "SUCCESS");
+                sessionStorage.setItem("kudiflow_transaction_reference", reference);
+                sessionStorage.setItem("kudiflow_completed_transaction", JSON.stringify(transaction));
+                window.location.href = "success.html";
+            }, 2500);
+        }
     </script>
 </body>
 </html>
