@@ -1,26 +1,28 @@
-/* ========================================
-   SEND MONEY
-======================================== */
-
 const transferForm = document.getElementById("transferForm");
 const recipientInput = document.getElementById("recipient");
 const amountInput = document.getElementById("amount");
 const recipientError = document.getElementById("recipientError");
 const amountError = document.getElementById("amountError");
 const transferError = document.getElementById("transferError");
+const availableBalanceEl = document.querySelector(".available-balance strong");
 
-const availableBalance = 2450;
+const getBalance = () => Number(localStorage.getItem("kudiflow_balance") || "2450");
+
+function updateBalancePreview() {
+    if (availableBalanceEl) availableBalanceEl.textContent = `GHS ${getBalance().toFixed(2)}`;
+}
 
 function validateTransfer() {
     let valid = true;
-
     recipientError.textContent = "";
     amountError.textContent = "";
     transferError.textContent = "";
     transferError.classList.add("hidden");
 
-    const recipient = recipientInput.value.trim();
+    const recipient = recipientInput.value.trim().toUpperCase();
     const amount = Number(amountInput.value);
+    const availableBalance = getBalance();
+    recipientInput.value = recipient;
 
     if (!recipient) {
         recipientError.textContent = "Recipient account number is required.";
@@ -45,33 +47,24 @@ function validateTransfer() {
     return valid;
 }
 
-transferForm.addEventListener("submit", function (event) {
+transferForm.addEventListener("submit", event => {
     event.preventDefault();
+    if (!validateTransfer()) return;
 
-    if (!validateTransfer()) {
-        return;
-    }
-
-    const recipient = recipientInput.value.trim();
-    const amount = Number(amountInput.value);
-
-    sessionStorage.setItem(
-        "kudiflow_transfer",
-        JSON.stringify({
-            recipient,
-            amount,
-            currency: "GHS"
-        })
-    );
-
+    sessionStorage.setItem("kudiflow_transfer", JSON.stringify({
+        recipient: recipientInput.value.trim(),
+        amount: Number(amountInput.value),
+        currency: "GHS"
+    }));
     window.location.href = "confirmation.html";
 });
 
 const logoutButton = document.getElementById("logoutButton");
-
 if (logoutButton) {
     logoutButton.addEventListener("click", () => {
         sessionStorage.removeItem("kudiflow_logged_in");
         window.location.href = "index.html";
     });
 }
+
+updateBalancePreview();
