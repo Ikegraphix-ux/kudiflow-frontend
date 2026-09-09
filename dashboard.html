@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KudiFlow personal finance dashboard">
     <title>KudiFlow - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,44 +17,45 @@
             <div class="brand-icon">K</div>
             <div><h2>KudiFlow</h2><span>Digital Finance</span></div>
         </div>
-        <nav class="sidebar-nav">
+        <nav class="sidebar-nav" aria-label="Primary navigation">
             <a href="dashboard.html" class="nav-link active"><span>⌂</span>Dashboard</a>
             <a href="send-money.html" class="nav-link"><span>↗</span>Send Money</a>
             <a href="transactions.html" class="nav-link"><span>↔</span>Transactions</a>
         </nav>
         <div class="sidebar-bottom">
-            <button id="logoutButton" class="logout-button"><span>↪</span>Logout</button>
+            <button id="logoutButton" class="logout-button" type="button"><span>↪</span>Logout</button>
         </div>
     </aside>
 
     <main class="dashboard-main">
         <header class="dashboard-header">
             <div>
-                <p class="welcome-small">Welcome back</p>
+                <p class="welcome-small">Personal account</p>
                 <h1>Good afternoon, Isaac</h1>
             </div>
             <div class="user-profile">
                 <div class="avatar">I</div>
-                <div class="user-info"><strong>Isaac</strong><span>Personal Account</span></div>
+                <div class="user-info"><strong>Isaac</strong><span>Account active</span></div>
             </div>
         </header>
 
-        <section class="balance-card">
+        <section class="balance-card" aria-label="Account balance">
             <div class="balance-top">
                 <div>
                     <p class="balance-label">Available Balance</p>
                     <h2 id="balanceAmount">GHS 2,450.00</h2>
                 </div>
-                <button class="balance-eye" id="toggleBalance" aria-label="Hide balance">◉</button>
+                <button class="balance-eye" id="toggleBalance" type="button" aria-label="Hide balance">◉</button>
             </div>
             <div class="balance-footer">
                 <div><span>Account Number</span><strong>KDF987654</strong></div>
                 <div><span>Currency</span><strong>GHS</strong></div>
+                <div><span>Status</span><strong>Active</strong></div>
             </div>
         </section>
 
         <section class="dashboard-section">
-            <div class="section-heading"><h2>Quick Actions</h2></div>
+            <div class="section-heading"><div><h2>Quick Actions</h2><p>Move money or review your activity</p></div></div>
             <div class="quick-actions">
                 <a href="send-money.html" class="quick-action card">
                     <div class="quick-icon">↗</div>
@@ -61,7 +63,7 @@
                 </a>
                 <a href="transactions.html" class="quick-action card">
                     <div class="quick-icon">↔</div>
-                    <div><strong>Transactions</strong><span>View your transaction history</span></div>
+                    <div><strong>Transactions</strong><span>View your complete history</span></div>
                 </a>
             </div>
         </section>
@@ -73,25 +75,31 @@
             </div>
             <div class="transactions-card card">
                 <div class="transaction-row">
-                    <div class="transaction-icon sent">↗</div>
-                    <div class="transaction-info"><strong>Sent to KDF456789</strong><span>Today, 11:42 AM</span></div>
-                    <div class="transaction-amount"><strong class="amount-negative">- GHS 100.00</strong><span class="status status-success">SUCCESS</span></div>
+                    <div class="transaction-icon sent" aria-hidden="true">↗</div>
+                    <div class="transaction-info"><strong>Sent to KDF456789</strong><span>Today, 11:42 AM · TXN-78452136</span></div>
+                    <div class="transaction-amount"><strong class="amount-negative">− GHS 100.00</strong><span class="status status-success">SUCCESS</span></div>
                 </div>
                 <div class="transaction-row">
-                    <div class="transaction-icon received">↙</div>
-                    <div class="transaction-info"><strong>Received from KDF321654</strong><span>Yesterday, 4:20 PM</span></div>
+                    <div class="transaction-icon received" aria-hidden="true">↙</div>
+                    <div class="transaction-info"><strong>Received from KDF321654</strong><span>Yesterday, 4:20 PM · TXN-78451982</span></div>
                     <div class="transaction-amount"><strong class="amount-positive">+ GHS 250.00</strong><span class="status status-success">SUCCESS</span></div>
                 </div>
                 <div class="transaction-row">
-                    <div class="transaction-icon sent">↗</div>
-                    <div class="transaction-info"><strong>Sent to KDF111222</strong><span>Yesterday, 9:15 AM</span></div>
-                    <div class="transaction-amount"><strong class="amount-negative">- GHS 50.00</strong><span class="status status-failed">FAILED</span></div>
+                    <div class="transaction-icon sent" aria-hidden="true">↗</div>
+                    <div class="transaction-info"><strong>Sent to KDF111222</strong><span>Yesterday, 9:15 AM · TXN-78451643</span></div>
+                    <div class="transaction-amount"><strong class="amount-negative">− GHS 50.00</strong><span class="status status-failed">FAILED</span></div>
                 </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section">
+            <div class="security-strip card">
+                <div class="security-icon">✓</div>
+                <div><strong>Your account is protected</strong><p>Demo environment · Transfers use virtual GHS only. No real money is moved.</p></div>
             </div>
         </section>
     </main>
 </div>
-
 <script src="js/session.js"></script>
 <script src="js/dashboard.js"></script>
 </body>
