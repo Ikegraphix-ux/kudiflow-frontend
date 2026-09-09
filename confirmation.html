@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KudiFlow - Confirm Transfer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="confirmation-page">
+
+        <section class="confirmation-card card">
+
+            <div class="confirmation-icon">
+                ?
+            </div>
+
+            <h1>Confirm Transfer</h1>
+
+            <p class="confirmation-description">
+                Please review the details before sending.
+            </p>
+
+
+            <div class="transfer-summary">
+
+                <div class="summary-item">
+                    <span>Recipient</span>
+                    <strong id="confirmRecipient">
+                        KDF456789
+                    </strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Amount</span>
+                    <strong id="confirmAmount">
+                        GHS 100.00
+                    </strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Transaction fee</span>
+                    <strong>GHS 0.00</strong>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <strong id="confirmTotal">
+                        GHS 100.00
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="confirmation-warning">
+                Please make sure the recipient account number
+                is correct before continuing.
+            </div>
+
+
+            <div class="confirmation-actions">
+
+                <button
+                    id="cancelTransfer"
+                    class="btn btn-secondary"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="confirmTransfer"
+                    class="btn btn-primary"
+                >
+                    Confirm & Send
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const transfer =
+            JSON.parse(
+                sessionStorage.getItem(
+                    "kudiflow_transfer"
+                )
+            );
+
+
+        if (!transfer) {
+
+            window.location.href =
+                "send-money.html";
+
+        } else {
+
+            document.getElementById(
+                "confirmRecipient"
+            ).textContent =
+                transfer.recipient;
+
+
+            document.getElementById(
+                "confirmAmount"
+            ).textContent =
+                `GHS ${transfer.amount.toFixed(2)}`;
+
+
+            document.getElementById(
+                "confirmTotal"
+            ).textContent =
+                `GHS ${transfer.amount.toFixed(2)}`;
+        }
+
+
+        document.getElementById(
+            "cancelTransfer"
+        ).addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "send-money.html";
+            }
+        );
+
+
+        document.getElementById(
+            "confirmTransfer"
+        ).addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "processing.html";
+            }
+        );
+
+    </script>
+    <script src="js/session.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

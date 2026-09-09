@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KudiFlow - Transaction Failed</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="state-page">
+
+        <section class="state-card">
+
+            <div class="failure-icon">
+                !
+            </div>
+
+            <h1>Transaction Failed</h1>
+
+            <p id="failureDescription">
+                We couldn't complete your transfer.
+            </p>
+
+
+            <div class="failure-box">
+
+                <span>Reason</span>
+
+                <strong id="failureReason">
+                    Transaction could not be completed.
+                </strong>
+
+            </div>
+
+
+            <div class="failure-reference">
+
+                <span>Transaction Reference</span>
+
+                <strong id="failureReference">
+                    TXN-00000000
+                </strong>
+
+            </div>
+
+
+            <div class="state-actions">
+
+                <a
+                    href="send-money.html"
+                    class="btn btn-primary"
+                >
+                    Try Again
+                </a>
+
+                <a
+                    href="dashboard.html"
+                    class="btn btn-secondary"
+                >
+                    Back to Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const failureReason =
+            sessionStorage.getItem(
+                "kudiflow_failure_reason"
+            );
+
+        const reference =
+            sessionStorage.getItem(
+                "kudiflow_transaction_reference"
+            );
+
+
+        if (failureReason) {
+
+            document.getElementById(
+                "failureReason"
+            ).textContent =
+                failureReason;
+        }
+
+
+        if (reference) {
+
+            document.getElementById(
+                "failureReference"
+            ).textContent =
+                reference;
+        }
+
+    </script>
+
+</body>
+
+</html>

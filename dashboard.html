@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KudiFlow - Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="brand-icon">
+                    K
+                </div>
+
+                <div>
+                    <h2>KudiFlow</h2>
+                    <span>Digital Finance</span>
+                </div>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="send-money.html" class="nav-link">
+                    <span>↗</span>
+                    Send Money
+                </a>
+
+                <a href="transactions.html" class="nav-link">
+                    <span>↔</span>
+                    Transactions
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button id="logoutButton" class="logout-button">
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="dashboard-main">
+
+            <!-- TOP BAR -->
+            <header class="dashboard-header">
+
+                <div>
+                    <p class="welcome-small">
+                        Welcome back
+                    </p>
+
+                    <h1>
+                        Good afternoon, Isaac
+                    </h1>
+                </div>
+
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        I
+                    </div>
+
+                    <div class="user-info">
+                        <strong>Isaac</strong>
+                        <span>Personal Account</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- BALANCE -->
+            <section class="balance-card">
+
+                <div class="balance-top">
+
+                    <div>
+                        <p class="balance-label">
+                            Available Balance
+                        </p>
+
+                        <h2 id="balanceAmount">
+                            GHS 2,450.00
+                        </h2>
+                    </div>
+
+                    <button
+                        class="balance-eye"
+                        id="toggleBalance"
+                        aria-label="Hide balance"
+                    >
+                        ◉
+                    </button>
+
+                </div>
+
+
+                <div class="balance-footer">
+
+                    <div>
+                        <span>Account Number</span>
+                        <strong>KDF987654</strong>
+                    </div>
+
+                    <div>
+                        <span>Currency</span>
+                        <strong>GHS</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+                    <h2>Quick Actions</h2>
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <a
+                        href="send-money.html"
+                        class="quick-action card"
+                    >
+                        <div class="quick-icon">
+                            ↗
+                        </div>
+
+                        <div>
+                            <strong>Send Money</strong>
+                            <span>Transfer money securely</span>
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="transactions.html"
+                        class="quick-action card"
+                    >
+                        <div class="quick-icon">
+                            ↔
+                        </div>
+
+                        <div>
+                            <strong>Transactions</strong>
+                            <span>View your transaction history</span>
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT TRANSACTIONS -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>Recent Transactions</h2>
+                        <p>Your latest financial activity</p>
+                    </div>
+
+                    <a href="transactions.html">
+                        View all
+                    </a>
+
+                </div>
+
+
+                <div class="transactions-card card">
+
+                    <!-- TRANSACTION 1 -->
+                    <div class="transaction-row">
+
+                        <div class="transaction-icon sent">
+                            ↗
+                        </div>
+
+                        <div class="transaction-info">
+
+                            <strong>
+                                Sent to KDF456789
+                            </strong>
+
+                            <span>
+                                Today, 11:42 AM
+                            </span>
+
+                        </div>
+
+                        <div class="transaction-amount">
+
+                            <strong class="amount-negative">
+                                - GHS 100.00
+                            </strong>
+
+                            <span class="status status-success">
+                                SUCCESS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRANSACTION 2 -->
+                    <div class="transaction-row">
+
+                        <div class="transaction-icon received">
+                            ↙
+                        </div>
+
+                        <div class="transaction-info">
+
+                            <strong>
+                                Received from KDF321654
+                            </strong>
+
+                            <span>
+                                Yesterday, 4:20 PM
+                            </span>
+
+                        </div>
+
+                        <div class="transaction-amount">
+
+                            <strong class="amount-positive">
+                                + GHS 250.00
+                            </strong>
+
+                            <span class="status status-success">
+                                SUCCESS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRANSACTION 3 -->
+                    <div class="transaction-row">
+
+                        <div class="transaction-icon sent">
+                            ↗
+                        </div>
+
+                        <div class="transaction-info">
+
+                            <strong>
+                                Sent to KDF111222
+                            </strong>
+
+                            <span>
+                                Yesterday, 9:15 AM
+                            </span>
+
+                        </div>
+
+                        <div class="transaction-amount">
+
+                            <strong class="amount-negative">
+                                - GHS 50.00
+                            </strong>
+
+                            <span class="status status-failed">
+                                FAILED
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/session.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

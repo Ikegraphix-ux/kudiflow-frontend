@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaction Details - KudiFlow</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <h2>KudiFlow</h2>
+            <span>Secure Digital Money</span>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="send-money.html">
+                Send Money
+            </a>
+
+            <a href="transactions.html" class="active">
+                Transactions
+            </a>
+
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn">
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+                <a href="transactions.html" class="back-link">
+                    ← Back to Transactions
+                </a>
+
+                <h1>Transaction Details</h1>
+
+                <p>
+                    View complete information about this transaction.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- Transaction Overview -->
+        <section class="card transaction-detail-card">
+
+            <div class="transaction-detail-header">
+
+                <div id="transactionIcon"
+                     class="detail-icon">
+                    ↑
+                </div>
+
+                <div>
+
+                    <h2 id="transactionTitle">
+                        Money Sent
+                    </h2>
+
+                    <span id="transactionStatus"
+                          class="status status-success">
+                        success
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-amount">
+
+                <span>Amount</span>
+
+                <strong id="transactionAmount">
+                    GHS 0.00
+                </strong>
+
+            </div>
+
+
+            <!-- Transaction Information -->
+            <div class="detail-section">
+
+                <h3>Transaction Information</h3>
+
+                <div class="detail-row">
+
+                    <span>Transaction ID</span>
+
+                    <strong id="transactionId">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Recipient</span>
+
+                    <strong id="transactionRecipient">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Date</span>
+
+                    <strong id="transactionDate">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Time</span>
+
+                    <strong id="transactionTime">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    <span>Transaction Fee</span>
+
+                    <strong>
+                        GHS 0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Timeline -->
+            <div class="detail-section">
+
+                <h3>Transaction Timeline</h3>
+
+
+                <div class="timeline">
+
+                    <div class="timeline-item completed">
+
+                        <div class="timeline-dot"></div>
+
+                        <div>
+
+                            <strong>
+                                Transaction initiated
+                            </strong>
+
+                            <span>
+                                Request was submitted.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timeline-item completed">
+
+                        <div class="timeline-dot"></div>
+
+                        <div>
+
+                            <strong>
+                                Transaction processing
+                            </strong>
+
+                            <span>
+                                Transaction was being processed.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="timelineFinal"
+                         class="timeline-item completed">
+
+                        <div class="timeline-dot"></div>
+
+                        <div>
+
+                            <strong>
+                                Transaction completed
+                            </strong>
+
+                            <span>
+                                Transaction status confirmed.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Action -->
+            <div class="detail-actions">
+
+                <a href="transactions.html"
+                   class="btn btn-secondary">
+                    Back to History
+                </a>
+
+                <a href="dashboard.html"
+                   class="btn btn-primary">
+                    Go to Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/transaction-details.js"></script>
+<script src="js/session.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

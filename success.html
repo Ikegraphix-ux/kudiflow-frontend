@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KudiFlow - Transfer Successful</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="state-page">
+
+        <section class="state-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h1>Transfer Successful</h1>
+
+            <p>
+                Your money has been transferred successfully.
+            </p>
+
+
+            <div class="success-amount" id="successAmount">
+                GHS 100.00
+            </div>
+
+
+            <div class="success-details">
+
+                <div>
+                    <span>Recipient</span>
+                    <strong id="successRecipient">
+                        KDF456789
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Transaction ID</span>
+                    <strong id="successReference">
+                        TXN-00000000
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Status</span>
+                    <strong class="status status-success">
+                        SUCCESS
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="state-actions">
+
+                <a
+                    href="transactions.html"
+                    class="btn btn-primary"
+                >
+                    View Transaction
+                </a>
+
+                <a
+                    href="dashboard.html"
+                    class="btn btn-secondary"
+                >
+                    Back to Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const transfer =
+            JSON.parse(
+                sessionStorage.getItem(
+                    "kudiflow_transfer"
+                )
+            );
+
+        const reference =
+            sessionStorage.getItem(
+                "kudiflow_transaction_reference"
+            );
+
+
+        if (transfer) {
+
+            document.getElementById(
+                "successAmount"
+            ).textContent =
+                `GHS ${transfer.amount.toFixed(2)}`;
+
+
+            document.getElementById(
+                "successRecipient"
+            ).textContent =
+                transfer.recipient;
+        }
+
+
+        if (reference) {
+
+            document.getElementById(
+                "successReference"
+            ).textContent =
+                reference;
+        }
+
+    </script>
+
+</body>
+
+</html>
