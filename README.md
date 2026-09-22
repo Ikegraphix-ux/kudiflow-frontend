@@ -2,61 +2,72 @@
 
 ## Secure Digital Money Transfer Platform
 
-KudiFlow is an educational financial-system prototype demonstrating how a digital money-transfer application can handle authentication, balances, transfers, transaction states, history, and transaction details.
+KudiFlow is a **frontend educational prototype** that models the user experience and workflow of a digital money-transfer platform.
 
-> **Important:** KudiFlow is a virtual-money educational prototype. It does not process real money and does not connect to real bank, mobile-money, or payment accounts.
+It demonstrates authentication screens, account balances, transfer validation, transaction states, transaction history, and transaction details using standard web technologies.
 
-## 🎯 Project Goal
+> **Important:** KudiFlow does not process real money and does not connect to real bank, mobile-money, card, or payment accounts.
 
-The goal is to model financial-system behavior rather than build a simple CRUD interface.
+## 🎯 Project Objective
 
-The project focuses on:
+The project is designed to demonstrate **financial-system thinking**, not just CRUD screens.
 
-- Secure authentication
+Key concepts represented in the interface include:
+
+- Authentication and session handling
 - Account and balance views
-- Transfer workflows
-- Transaction state management
-- Retry-safe transaction behavior
+- Transfer validation
+- Transaction confirmation
+- Processing, success, and failure states
+- Transaction history and filtering
+- Transaction details and status
+- Retry-safe workflow concepts
 - Auditability and traceability
-- Clear financial UX
+- Responsive financial UX
 
-## ✨ Frontend Features
-
-- Login and registration
-- Dashboard and balance display
-- Send-money workflow
-- Transfer confirmation
-- Processing, success and failure states
-- Transaction history
-- Transaction details
-- Search and filtering
-- Responsive interface
-- Session handling
-- Form validation
-
-## 🔄 Transfer Flow
+## 🔄 User Flow
 
 ```text
-Login
-  ↓
-Dashboard
-  ↓
-Send Money
-  ↓
-Validate
-  ↓
-Confirm
-  ↓
-Process
-  ↓
+Login / Register
+      ↓
+   Dashboard
+      ↓
+   Send Money
+      ↓
+    Validate
+      ↓
+   Confirm
+      ↓
+   Processing
+      ↓
 Success / Failure
-  ↓
+      ↓
 Transaction History
-  ↓
+      ↓
 Transaction Details
 ```
 
-## 🏗️ Planned Production Architecture
+## 🧩 Current Implementation
+
+The current repository is intentionally **frontend-only**.
+
+```text
+Browser
+  ↓
+HTML
+  ↓
+CSS
+  ↓
+JavaScript
+  ↓
+Session Storage / Local Storage / Mock Data
+```
+
+The prototype uses browser storage and seeded data to simulate application state.
+
+## 🏗️ Planned Backend Architecture
+
+The frontend is designed to be connected to a REST API in a later phase.
 
 ```text
 Frontend
@@ -64,6 +75,8 @@ Frontend
 REST API
    ↓
 Authentication Middleware
+   ↓
+Routes
    ↓
 Controllers
    ↓
@@ -74,32 +87,43 @@ Repositories
 PostgreSQL
 ```
 
-The service layer would own transfer rules while repositories handle database operations.
+The planned service layer would own financial business rules, while repositories would handle database access.
 
-## 🔐 Backend Engineering Concepts
+## 🔐 Planned Financial-System Concepts
 
-The planned backend uses concepts such as:
+The backend design is intended to support:
 
 - JWT authentication
 - Password hashing with bcrypt
-- Decimal monetary values
-- Database transactions
-- Atomic debit/credit operations
-- Row locking
-- Deterministic lock ordering
+- Exact decimal monetary values
+- Atomic database transactions
+- Debit/credit consistency
+- Row locking and deterministic lock ordering
 - Idempotency keys
-- Audit logs
 - Transaction events
+- Audit logs
 - Database constraints
 - Automated tests
 
-## 🛠️ Frontend Technology
+These concepts are **planned backend capabilities**, not claims that they are currently implemented in this frontend repository.
 
-- HTML5
-- CSS3
-- JavaScript
-- Browser session storage for prototype state
-- Responsive CSS
+## ✨ Frontend Features
+
+- Login and registration interfaces
+- Demo authentication flow
+- Dashboard and balance display
+- Send-money workflow
+- Transfer confirmation
+- Processing state
+- Success and failure states
+- Transaction history
+- Search and filtering
+- Transaction details
+- Session-expired handling
+- Network-error state
+- Form validation
+- Responsive interface
+- Accessibility-focused interaction states
 
 ## 📁 Project Structure
 
@@ -117,28 +141,84 @@ kudiflow-frontend/
 ├── session-expired.html
 ├── transactions.html
 ├── transaction-details.html
+│
 ├── css/
+│   ├── style.css
+│   └── transactions.css
+│
 ├── js/
+│   ├── auth.js
+│   ├── session.js
+│   ├── dashboard.js
+│   ├── transfer.js
+│   ├── transactions.js
+│   └── transaction-details.js
+│
 └── docs/
+    ├── README.md
+    ├── architecture.md
+    ├── technical-decisions.md
+    └── testing.md
 ```
+
+## 🧪 Testing
+
+The prototype has been manually tested across:
+
+- Login validation
+- Transfer validation
+- Insufficient-balance handling
+- Transaction confirmation
+- Success/failure/processing states
+- Transaction search
+- Status and type filtering
+- Session protection
+- Logout behavior
+
+See [docs/testing.md](docs/testing.md) for the test cases.
+
+## 📚 Documentation
+
+- [Documentation Guide](docs/README.md)
+- [Architecture](docs/architecture.md)
+- [Technical Decisions](docs/technical-decisions.md)
+- [Testing](docs/testing.md)
 
 ## ⚠️ Current Limitations
 
-This frontend prototype does not provide:
+This repository does **not** currently provide:
 
-- Real authentication
-- A production backend connection
+- Real user authentication
+- Server-side authorization
+- A production REST API
 - A production database
 - Real account balances
 - Real financial transactions
 - Payment or mobile-money integration
-- Server-side authorization
 - Production transaction locking
+- Production-grade idempotency
+- Server-side validation
+
+The browser-side demo should therefore not be treated as a financial service.
 
 ## 🚧 Status
 
-**Frontend prototype complete — backend integration planned.**
+**Frontend prototype complete. Backend integration is the next development phase.**
+
+## 🛠️ Technology
+
+- HTML5
+- CSS3
+- JavaScript
+- Browser Session Storage
+- Browser Local Storage
 
 ## 🤖 AI Disclosure
 
-AI tools were used as development and learning assistants. The implementation was reviewed and adapted by the developer, who remains responsible for understanding and maintaining the project.
+AI tools were used as development and learning assistants during the project. The implementation was reviewed and adapted by the developer, who remains responsible for understanding and maintaining the project.
+
+## 👨‍💻 Developer
+
+**Isaac Asumadu Agyei**
+
+Software Engineering Student · Full-Stack Developer · Ghana
